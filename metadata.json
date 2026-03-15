@@ -1,0 +1,5 @@
+{
+  "name": "AI Code Reviewer",
+  "description": "An AI-powered code analysis tool that identifies logical bugs, security flaws, and performance issues directly in your editor.",
+  "requestFramePermissions": []
+}

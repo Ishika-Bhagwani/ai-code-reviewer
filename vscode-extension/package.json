@@ -1,0 +1,68 @@
+{
+  "name": "ai-code-reviewer",
+  "displayName": "AI Code Reviewer",
+  "description": "Professional AI-powered code review and complexity analysis.",
+  "version": "1.0.0",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-code-reviewer-explorer",
+          "title": "AI Reviewer",
+          "icon": "$(shield)"
+        }
+      ]
+    },
+    "views": {
+      "ai-code-reviewer-explorer": [
+        {
+          "type": "webview",
+          "id": "ai-code-reviewer.view",
+          "name": "Code Review"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ai-code-reviewer.analyze",
+        "title": "AI: Analyze Current File"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ai-code-reviewer.analyze",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.5",
+    "eslint": "^8.34.0",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0"
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.0"
+  }
+}

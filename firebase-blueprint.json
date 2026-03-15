@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique identifier for the user." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "photoURL": { "type": "string", "description": "The user's profile photo URL." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the profile was created." }
+      },
+      "required": ["uid", "email"]
+    },
+    "CodeReview": {
+      "title": "Code Review",
+      "description": "Stores a generated code review report.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The ID of the user who owns this review." },
+        "code": { "type": "string", "description": "The code that was analyzed." },
+        "language": { "type": "string", "description": "The programming language of the code." },
+        "report": { "type": "object", "description": "The full analysis report object." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the review was generated." }
+      },
+      "required": ["uid", "code", "language", "report", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "Collection of user profiles."
+    },
+    "/users/{uid}/reviews/{reviewId}": {
+      "schema": "CodeReview",
+      "description": "Subcollection of code reviews for a specific user."
+    }
+  }
+}
